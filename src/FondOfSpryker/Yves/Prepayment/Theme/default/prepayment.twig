@@ -1,0 +1,10 @@
+<div class="payment-subform prepayment-form">
+    <p>Please transfer the sum to the following account:</p>
+    <p><strong>Account Holder:</strong> [Place account holder here..]</p>
+    <p><strong>IBAN:</strong> {{ iban }}</p>
+    <p><strong>BIC:</strong> [Place BIC here..]</p>
+    <p>Additional payment instructions go here...</p>
+
+    {{ form_widget(form.paymentmethods_prepayment) }}
+    {{ form_errors(form.paymentmethods_prepayment) }}
+</div>
