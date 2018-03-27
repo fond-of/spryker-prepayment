@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\Prepayment;
 
+use FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundBridge;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 

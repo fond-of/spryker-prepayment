@@ -4,7 +4,7 @@
         xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="spryker:oms-01 https://static.spryker.com/oms-01.xsd">
 
-    <process name="DummyRefund">
+    <process name="PrepaymentRefund">
 
         <states>
             <state name="ready for return" />
@@ -28,7 +28,7 @@
 
         <events>
             <event name="execute-return" onEnter="true"/>
-            <event name="refund" manual="true" command="DummyPayment/Refund"/>
+            <event name="refund" manual="true" command="Prepayment/Refund"/>
         </events>
     </process>
 

@@ -27,7 +27,7 @@ class PrepaymentHandler
     protected function setPaymentProviderAndMethod(QuoteTransfer $quoteTransfer)
     {
         $quoteTransfer->getPayment()
-            ->setPaymentProvider(PrepaymentConstants::PAYMENT_PROVIDER)
+            ->setPaymentProvider(PrepaymentConstants::PROVIDER_NAME)
             ->setPaymentMethod(PrepaymentConstants::PAYMENT_METHOD_PREPAYMENT);
     }
 }

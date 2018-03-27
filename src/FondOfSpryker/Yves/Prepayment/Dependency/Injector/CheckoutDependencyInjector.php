@@ -52,7 +52,7 @@ class CheckoutDependencyInjector implements DependencyInjectorInterface
         $container->extend(CheckoutDependencyProvider::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
             $prepaymentHandlerPlugin = new PrepaymentHandlerPlugin();
 
-            $paymentMethodHandler->add($prepaymentHandlerPlugin, PrepaymentConstants::PAYMENT_METHOD_PREPAYMENT);
+            $paymentMethodHandler->add($prepaymentHandlerPlugin, PrepaymentConstants::PREPAYMENT_PROPERTY_PATH);
 
             return $paymentMethodHandler;
         });

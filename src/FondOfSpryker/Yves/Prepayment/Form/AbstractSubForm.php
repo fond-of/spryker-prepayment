@@ -16,4 +16,12 @@ abstract class AbstractSubForm extends AbstractSubFormType implements SubFormInt
     {
         return PrepaymentConstants::PROVIDER_NAME;
     }
+
+    /**
+     * @return array
+     */
+    protected function getAdditionalFormVars(): array
+    {
+        return $this->getFactory()->createAdditionalFormVars();
+    }
 }
