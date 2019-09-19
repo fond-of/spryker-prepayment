@@ -10,21 +10,21 @@
   ],
   "require": {
     "php": ">=7.1",
-    "spryker/checkout": "^3.0.0 || ^4.0.0",
-    "spryker/kernel": "^3.0.0",
-    "spryker/oms": "^6.0.0 || ^7.0.0 || ^8.0.0",
-    "spryker/payment": "^3.0.0 || ^4.0.0",
-    "spryker/refund": "^4.0.0 || ^5.0.0",
-    "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
-    "spryker/step-engine": "^3.1.0",
-    "spryker/symfony": "^3.0.0"
+    "spryker/checkout": "^6.1.0",
+    "spryker/kernel": "^3.37.5",
+    "spryker/oms": "^10.3.0",
+    "spryker/payment": "^4.6.1",
+    "spryker/refund": "^5.3.0",
+    "spryker/sales": "^10.3.1",
+    "spryker/step-engine": "^3.2.0",
+    "spryker/symfony": "^3.3.2"
   },
   "require-dev": {
-    "spryker/code-sniffer": "^0.11",
-    "codeception/codeception": "^2.3",
+    "spryker/code-sniffer": "^0.14.7",
+    "codeception/codeception": "^2.5",
     "mikey179/vfsStream": "^1.6",
     "phpro/grumphp": "^0.14",
-    "sebastian/phpcpd": "^4.0",
+    "sebastian/phpcpd": "^4.1",
     "php-coveralls/php-coveralls": "^2.0"
   },
   "minimum-stability": "dev",
