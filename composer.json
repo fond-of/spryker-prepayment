@@ -12,10 +12,10 @@
     "php": ">=7.1",
     "spryker/checkout": "^6.1.0",
     "spryker/kernel": "^3.37.5",
-    "spryker/oms": "^10.3.0",
+    "spryker/oms": "^10.4.0",
     "spryker/payment": "^4.6.1",
     "spryker/refund": "^5.3.0",
-    "spryker/sales": "^10.3.1",
+    "spryker/sales": "^11.1.0",
     "spryker/step-engine": "^3.2.0",
     "spryker/symfony": "^3.3.2"
   },
