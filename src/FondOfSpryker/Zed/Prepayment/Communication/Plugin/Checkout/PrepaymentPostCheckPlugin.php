@@ -12,10 +12,11 @@ use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPostCheckPluginInterf
 /**
  * @method \FondOfSpryker\Zed\Prepayment\Business\PrepaymentFacadeInterface getFacade()
  * @method \FondOfSpryker\Zed\Prepayment\Communication\PrepaymentCommunicationFactory getFactory()
+ * @method \FondOfSpryker\Zed\Prepayment\PrepaymentConfig getConfig()
  */
 class PrepaymentPostCheckPlugin extends AbstractPlugin implements CheckoutPostCheckPluginInterface
 {
-    const ERROR_CODE_PAYMENT_FAILED = 'payment failed';
+    public const ERROR_CODE_PAYMENT_FAILED = 'payment failed';
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer

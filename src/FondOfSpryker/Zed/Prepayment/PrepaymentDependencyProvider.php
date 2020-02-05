@@ -8,7 +8,7 @@ use Spryker\Zed\Kernel\Container;
 
 class PrepaymentDependencyProvider extends AbstractBundleDependencyProvider
 {
-    const FACADE_REFUND = 'refund facade';
+    public const FACADE_REFUND = 'refund facade';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -32,6 +32,7 @@ class PrepaymentDependencyProvider extends AbstractBundleDependencyProvider
         $container[self::FACADE_REFUND] = function (Container $container) {
             return new PrepaymentToRefundBridge($container->getLocator()->refund()->facade());
         };
+
         return $container;
     }
 }

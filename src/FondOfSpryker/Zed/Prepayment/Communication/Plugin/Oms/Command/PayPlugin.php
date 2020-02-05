@@ -10,6 +10,7 @@ use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 /**
  * @method \FondOfSpryker\Zed\Prepayment\Business\PrepaymentFacadeInterface getFacade()
  * @method \FondOfSpryker\Zed\Prepayment\Communication\PrepaymentCommunicationFactory getFactory()
+ * @method \FondOfSpryker\Zed\Prepayment\PrepaymentConfig getConfig()
  */
 class PayPlugin extends AbstractPlugin implements CommandByOrderInterface
 {

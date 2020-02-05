@@ -9,6 +9,7 @@ use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
 /**
  * @method \FondOfSpryker\Zed\Prepayment\Communication\PrepaymentCommunicationFactory getFactory()
  * @method \FondOfSpryker\Zed\Prepayment\Business\PrepaymentFacadeInterface getFacade()
+ * @method \FondOfSpryker\Zed\Prepayment\PrepaymentConfig getConfig()
  */
 class IsPayedPlugin extends AbstractPlugin implements ConditionInterface
 {
