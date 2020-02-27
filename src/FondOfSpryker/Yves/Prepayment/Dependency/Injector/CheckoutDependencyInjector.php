@@ -6,7 +6,8 @@ use FondOfSpryker\Shared\Prepayment\PrepaymentConstants;
 use FondOfSpryker\Yves\Prepayment\Plugin\PrepaymentHandlerPlugin;
 use FondOfSpryker\Yves\Prepayment\Plugin\PrepaymentSubFormPlugin;
 use Spryker\Shared\Kernel\ContainerInterface;
-use Spryker\Shared\Kernel\Dependency\Injector\DependencyInjectorInterface;
+use Spryker\Yves\Kernel\Container;
+use Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorInterface;
 use Spryker\Yves\Checkout\CheckoutDependencyProvider;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
@@ -14,11 +15,11 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 class CheckoutDependencyInjector implements DependencyInjectorInterface
 {
     /**
-     * @param \Spryker\Shared\Kernel\ContainerInterface|\Spryker\Yves\Kernel\Container $container
+     * @param  \Spryker\Yves\Kernel\Container  $container
      *
      * @return \Spryker\Shared\Kernel\ContainerInterface|\Spryker\Yves\Kernel\Container
      */
-    public function inject(ContainerInterface $container)
+    public function inject(Container $container)
     {
         $container = $this->injectPaymentSubForms($container);
         $container = $this->injectPaymentMethodHandler($container);
