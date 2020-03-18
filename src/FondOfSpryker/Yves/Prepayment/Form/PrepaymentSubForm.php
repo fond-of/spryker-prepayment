@@ -13,7 +13,7 @@ class PrepaymentSubForm extends AbstractSubForm
     /**
      * @return string
      */
-    protected function getTemplatePath()
+    protected function getTemplatePath(): string
     {
         return PrepaymentConstants::PROVIDER_NAME . '/' . PrepaymentConstants::PAYMENT_METHOD_PREPAYMENT;
     }
@@ -21,7 +21,7 @@ class PrepaymentSubForm extends AbstractSubForm
     /**
      * @return string
      */
-    public function getPropertyPath()
+    public function getPropertyPath(): string
     {
         return PrepaymentConstants::PREPAYMENT_PROPERTY_PATH;
     }
@@ -29,7 +29,7 @@ class PrepaymentSubForm extends AbstractSubForm
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return PrepaymentConstants::PREPAYMENT_PROPERTY_PATH;
     }
@@ -39,7 +39,7 @@ class PrepaymentSubForm extends AbstractSubForm
      *
      * @return void
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             SubFormInterface::OPTIONS_FIELD_NAME => [],
@@ -53,7 +53,7 @@ class PrepaymentSubForm extends AbstractSubForm
      *
      * @return void
      */
-    public function buildView(FormView $view, FormInterface $form, array $options)
+    public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         parent::buildView($view, $form, $options);
 

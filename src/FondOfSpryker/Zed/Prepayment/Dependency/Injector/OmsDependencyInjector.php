@@ -19,8 +19,10 @@ class OmsDependencyInjector extends AbstractDependencyInjector
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function injectBusinessLayerDependencies(Container $container)
+    public function injectBusinessLayerDependencies(Container $container): Container
     {
+        $container = parent::injectBusinessLayerDependencies($container);
+
         $container = $this->injectCommands($container);
         $container = $this->injectConditions($container);
 
@@ -32,14 +34,17 @@ class OmsDependencyInjector extends AbstractDependencyInjector
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function injectCommands(Container $container)
+    protected function injectCommands(Container $container): Container
     {
-        $container->extend(OmsDependencyProvider::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
-            $commandCollection->add(new RefundPlugin(), 'Prepayment/Refund');
-            $commandCollection->add(new PayPlugin(), 'Prepayment/Pay');
+        $container->extend(
+            OmsDependencyProvider::COMMAND_PLUGINS,
+            static function (CommandCollectionInterface $commandCollection) {
+                $commandCollection->add(new RefundPlugin(), 'Prepayment/Refund');
+                $commandCollection->add(new PayPlugin(), 'Prepayment/Pay');
 
-            return $commandCollection;
-        });
+                return $commandCollection;
+            }
+        );
 
         return $container;
     }
@@ -49,14 +54,17 @@ class OmsDependencyInjector extends AbstractDependencyInjector
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function injectConditions(Container $container)
+    protected function injectConditions(Container $container): Container
     {
-        $container->extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
-            $conditionCollection->add(new IsAuthorizedPlugin(), 'Prepayment/IsAuthorized');
-            $conditionCollection->add(new IsPayedPlugin(), 'Prepayment/IsPayed');
+        $container->extend(
+            OmsDependencyProvider::CONDITION_PLUGINS,
+            static function (ConditionCollectionInterface $conditionCollection) {
+                $conditionCollection->add(new IsAuthorizedPlugin(), 'Prepayment/IsAuthorized');
+                $conditionCollection->add(new IsPayedPlugin(), 'Prepayment/IsPayed');
 
-            return $conditionCollection;
-        });
+                return $conditionCollection;
+            }
+        );
 
         return $container;
     }

@@ -15,27 +15,25 @@ use Spryker\Zed\Payment\Dependency\Plugin\Checkout\CheckoutPostCheckPluginInterf
  */
 class PrepaymentPostCheckPlugin extends AbstractPlugin implements CheckoutPostCheckPluginInterface
 {
-    const ERROR_CODE_PAYMENT_FAILED = 'payment failed';
+    public const ERROR_CODE_PAYMENT_FAILED = 'payment failed';
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
      *
-     * @return \Generated\Shared\Transfer\CheckoutResponseTransfer
+     * @return void
      */
-    public function execute(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer)
+    public function execute(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer): void
     {
-        if (!$this->isAuthorizationApproved($quoteTransfer)) {
-            $checkoutErrorTransfer = new CheckoutErrorTransfer();
-            $checkoutErrorTransfer
-                ->setErrorCode(self::ERROR_CODE_PAYMENT_FAILED)
-                ->setMessage('Something went wrong with your payment. Try again!');
-
-            $checkoutResponseTransfer->addError($checkoutErrorTransfer);
-            $checkoutResponseTransfer->setIsSuccess(false);
+        if ($this->isAuthorizationApproved($quoteTransfer)) {
+            return;
         }
 
-        return $checkoutResponseTransfer;
+        $checkoutErrorTransfer = (new CheckoutErrorTransfer())->setErrorCode(self::ERROR_CODE_PAYMENT_FAILED)
+            ->setMessage('Something went wrong with your payment. Try again!');
+
+        $checkoutResponseTransfer->addError($checkoutErrorTransfer)
+            ->setIsSuccess(false);
     }
 
     /**
@@ -43,13 +41,14 @@ class PrepaymentPostCheckPlugin extends AbstractPlugin implements CheckoutPostCh
      *
      * @return bool
      */
-    protected function isAuthorizationApproved(QuoteTransfer $quoteTransfer)
+    protected function isAuthorizationApproved(QuoteTransfer $quoteTransfer): bool
     {
         $quoteTransfer->requireBillingAddress();
 
         $billingAddress = $quoteTransfer->getBillingAddress();
+
         $billingAddress->requireLastName();
 
-        return ($billingAddress->getLastName() !== PrepaymentConstants::LAST_NAME_FOR_INVALID_TEST);
+        return $billingAddress->getLastName() !== PrepaymentConstants::LAST_NAME_FOR_INVALID_TEST;
     }
 }

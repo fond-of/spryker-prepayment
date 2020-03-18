@@ -18,8 +18,10 @@ class PaymentDependencyInjector extends AbstractDependencyInjector
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function injectBusinessLayerDependencies(Container $container)
+    public function injectBusinessLayerDependencies(Container $container): Container
     {
+        $container = parent::injectBusinessLayerDependencies($container);
+
         $container = $this->injectPaymentPlugins($container);
 
         return $container;
@@ -30,15 +32,32 @@ class PaymentDependencyInjector extends AbstractDependencyInjector
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function injectPaymentPlugins(Container $container)
+    protected function injectPaymentPlugins(Container $container): Container
     {
-        $container->extend(PaymentDependencyProvider::CHECKOUT_PLUGINS, function (CheckoutPluginCollection $pluginCollection) {
-            $pluginCollection->add(new PrepaymentPreCheckPlugin(), PrepaymentConstants::PROVIDER_NAME, PaymentDependencyProvider::CHECKOUT_PRE_CHECK_PLUGINS);
-            $pluginCollection->add(new PrepaymentSaveOrderPlugin(), PrepaymentConstants::PROVIDER_NAME, PaymentDependencyProvider::CHECKOUT_ORDER_SAVER_PLUGINS);
-            $pluginCollection->add(new PrepaymentPostCheckPlugin(), PrepaymentConstants::PROVIDER_NAME, PaymentDependencyProvider::CHECKOUT_POST_SAVE_PLUGINS);
+        $container->extend(
+            PaymentDependencyProvider::CHECKOUT_PLUGINS,
+            static function (CheckoutPluginCollection $pluginCollection) {
+                $pluginCollection->add(
+                    new PrepaymentPreCheckPlugin(),
+                    PrepaymentConstants::PROVIDER_NAME,
+                    PaymentDependencyProvider::CHECKOUT_PRE_CHECK_PLUGINS
+                );
 
-            return $pluginCollection;
-        });
+                $pluginCollection->add(
+                    new PrepaymentSaveOrderPlugin(),
+                    PrepaymentConstants::PROVIDER_NAME,
+                    PaymentDependencyProvider::CHECKOUT_ORDER_SAVER_PLUGINS
+                );
+
+                $pluginCollection->add(
+                    new PrepaymentPostCheckPlugin(),
+                    PrepaymentConstants::PROVIDER_NAME,
+                    PaymentDependencyProvider::CHECKOUT_POST_SAVE_PLUGINS
+                );
+
+                return $pluginCollection;
+            }
+        );
 
         return $container;
     }

@@ -11,8 +11,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class PrepaymentFacade extends AbstractFacade implements PrepaymentFacadeInterface
 {
     /**
-     * Specification:
-     * - Calculate refund amount for given order items and order entity
+     * {@inheritDoc}
      *
      * @api
      *
@@ -21,7 +20,7 @@ class PrepaymentFacade extends AbstractFacade implements PrepaymentFacadeInterfa
      *
      * @return void
      */
-    public function refund(array $salesOrderItems, SpySalesOrder $salesOrderEntity)
+    public function refund(array $salesOrderItems, SpySalesOrder $salesOrderEntity): void
     {
         $this->getFactory()->createRefund()->refund($salesOrderItems, $salesOrderEntity);
     }

@@ -18,7 +18,7 @@ class IsAuthorizedPlugin extends AbstractPlugin implements ConditionInterface
      *
      * @return bool
      */
-    public function check(SpySalesOrderItem $orderItem)
+    public function check(SpySalesOrderItem $orderItem): bool
     {
         $lastName = $orderItem->getOrder()->getLastName();
 

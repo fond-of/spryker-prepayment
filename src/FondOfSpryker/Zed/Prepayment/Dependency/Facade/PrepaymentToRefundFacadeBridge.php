@@ -5,7 +5,7 @@ namespace FondOfSpryker\Zed\Prepayment\Dependency\Facade;
 use Generated\Shared\Transfer\RefundTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 
-class PrepaymentToRefundBridge implements PrepaymentToRefundInterface
+class PrepaymentToRefundFacadeBridge implements PrepaymentToRefundFacadeInterface
 {
     /**
      * @var \Spryker\Zed\Refund\Business\RefundFacadeInterface
@@ -26,7 +26,7 @@ class PrepaymentToRefundBridge implements PrepaymentToRefundInterface
      *
      * @return \Generated\Shared\Transfer\RefundTransfer
      */
-    public function calculateRefund(array $salesOrderItems, SpySalesOrder $salesOrderEntity)
+    public function calculateRefund(array $salesOrderItems, SpySalesOrder $salesOrderEntity): RefundTransfer
     {
         return $this->refundFacade->calculateRefund($salesOrderItems, $salesOrderEntity);
     }
@@ -36,7 +36,7 @@ class PrepaymentToRefundBridge implements PrepaymentToRefundInterface
      *
      * @return bool
      */
-    public function saveRefund(RefundTransfer $refundTransfer)
+    public function saveRefund(RefundTransfer $refundTransfer): bool
     {
         return $this->refundFacade->saveRefund($refundTransfer);
     }

@@ -12,7 +12,7 @@ class PrepaymentHandler
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function addPaymentToQuote(QuoteTransfer $quoteTransfer)
+    public function addPaymentToQuote(QuoteTransfer $quoteTransfer): QuoteTransfer
     {
         $this->setPaymentProviderAndMethod($quoteTransfer);
 
@@ -24,7 +24,7 @@ class PrepaymentHandler
      *
      * @return void
      */
-    protected function setPaymentProviderAndMethod(QuoteTransfer $quoteTransfer)
+    protected function setPaymentProviderAndMethod(QuoteTransfer $quoteTransfer): void
     {
         $quoteTransfer->getPayment()
             ->setPaymentProvider(PrepaymentConstants::PROVIDER_NAME)

@@ -2,21 +2,21 @@
 
 namespace FondOfSpryker\Zed\Prepayment\Business\Model\Payment;
 
-use FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundInterface;
+use FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundFacadeInterface;
 use Generated\Shared\Transfer\RefundTransfer;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 
 class Refund implements RefundInterface
 {
     /**
-     * @var \FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundInterface
+     * @var \FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundFacadeInterface
      */
     protected $refundFacade;
 
     /**
-     * @param \FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundInterface $refundFacade
+     * @param \FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundFacadeInterface $refundFacade
      */
-    public function __construct(PrepaymentToRefundInterface $refundFacade)
+    public function __construct(PrepaymentToRefundFacadeInterface $refundFacade)
     {
         $this->refundFacade = $refundFacade;
     }
@@ -27,7 +27,7 @@ class Refund implements RefundInterface
      *
      * @return void
      */
-    public function refund(array $salesOrderItems, SpySalesOrder $salesOrderEntity)
+    public function refund(array $salesOrderItems, SpySalesOrder $salesOrderEntity): void
     {
         $refundTransfer = $this->refundFacade->calculateRefund($salesOrderItems, $salesOrderEntity);
         $paymentRefundResult = $this->refundPayment($refundTransfer);
@@ -44,7 +44,7 @@ class Refund implements RefundInterface
      *
      * @return bool
      */
-    protected function refundPayment(RefundTransfer $refundTransfer)
+    protected function refundPayment(RefundTransfer $refundTransfer): bool
     {
         return ($refundTransfer->getAmount() > 0);
     }
