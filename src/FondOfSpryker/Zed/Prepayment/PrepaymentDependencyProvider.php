@@ -2,21 +2,23 @@
 
 namespace FondOfSpryker\Zed\Prepayment;
 
-use FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundBridge;
+use FondOfSpryker\Zed\Prepayment\Dependency\Facade\PrepaymentToRefundFacadeBridge;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
 class PrepaymentDependencyProvider extends AbstractBundleDependencyProvider
 {
-    const FACADE_REFUND = 'refund facade';
+    public const FACADE_REFUND = 'FACADE_REFUND';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
+        $container = parent::provideBusinessLayerDependencies($container);
+
         $container = $this->addRefundFacade($container);
 
         return $container;
@@ -27,11 +29,12 @@ class PrepaymentDependencyProvider extends AbstractBundleDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addRefundFacade(Container $container)
+    protected function addRefundFacade(Container $container): Container
     {
-        $container[self::FACADE_REFUND] = function (Container $container) {
-            return new PrepaymentToRefundBridge($container->getLocator()->refund()->facade());
+        $container[static::FACADE_REFUND] = static function (Container $container) {
+            return new PrepaymentToRefundFacadeBridge($container->getLocator()->refund()->facade());
         };
+
         return $container;
     }
 }

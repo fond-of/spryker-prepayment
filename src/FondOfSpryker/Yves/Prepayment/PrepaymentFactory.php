@@ -15,7 +15,7 @@ class PrepaymentFactory extends AbstractFactory
     /**
      * @return \FondOfSpryker\Yves\Prepayment\Form\PrepaymentSubForm
      */
-    public function createPrepaymentForm()
+    public function createPrepaymentForm(): PrepaymentSubForm
     {
         return new PrepaymentSubForm();
     }
@@ -23,7 +23,7 @@ class PrepaymentFactory extends AbstractFactory
     /**
      * @return \FondOfSpryker\Yves\Prepayment\Form\DataProvider\PrepaymentFormDataProvider
      */
-    public function createPrepaymentFormDataProvider()
+    public function createPrepaymentFormDataProvider(): PrepaymentFormDataProvider
     {
         return new PrepaymentFormDataProvider();
     }
@@ -31,7 +31,7 @@ class PrepaymentFactory extends AbstractFactory
     /**
      * @return \FondOfSpryker\Yves\Prepayment\Handler\PrepaymentHandler
      */
-    public function createPrepaymentHandler()
+    public function createPrepaymentHandler(): PrepaymentHandler
     {
         return new PrepaymentHandler();
     }

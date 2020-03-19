@@ -22,7 +22,7 @@ class PrepaymentPreCheckPlugin extends AbstractPlugin implements CheckoutPreChec
     public function execute(
         QuoteTransfer $quoteTransfer,
         CheckoutResponseTransfer $checkoutResponseTransfer
-    ) {
+    ): bool {
         $checkoutResponseTransfer->setIsSuccess(true);
 
         return true;

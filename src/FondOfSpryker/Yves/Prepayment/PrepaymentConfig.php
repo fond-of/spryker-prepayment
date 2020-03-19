@@ -10,7 +10,7 @@ class PrepaymentConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getIban()
+    public function getIban(): string
     {
         return $this->get(PrepaymentConstants::IBAN, '');
     }
@@ -18,7 +18,7 @@ class PrepaymentConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getBic()
+    public function getBic(): string
     {
         return $this->get(PrepaymentConstants::BIC, '');
     }
@@ -26,7 +26,7 @@ class PrepaymentConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getAccountHolder()
+    public function getAccountHolder(): string
     {
         return $this->get(PrepaymentConstants::ACCOUNT_HOLDER, '');
     }
@@ -34,7 +34,7 @@ class PrepaymentConfig extends AbstractBundleConfig
     /**
      * @return string
      */
-    public function getCustomText()
+    public function getCustomText(): string
     {
         return $this->get(PrepaymentConstants::CUSTOM_TEXT, '');
     }

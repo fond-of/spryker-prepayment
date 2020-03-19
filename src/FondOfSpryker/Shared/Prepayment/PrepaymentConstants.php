@@ -4,13 +4,13 @@ namespace FondOfSpryker\Shared\Prepayment;
 
 interface PrepaymentConstants
 {
-    const PROVIDER_NAME = 'Prepayment';
-    const LAST_NAME_FOR_INVALID_TEST = 'Invalid';
-    const PAYMENT_METHOD_PREPAYMENT = 'prepayment';
-    const PREPAYMENT_PROPERTY_PATH = self::PAYMENT_METHOD_PREPAYMENT . self::PROVIDER_NAME;
+    public const PROVIDER_NAME = 'Prepayment';
+    public const LAST_NAME_FOR_INVALID_TEST = 'Invalid';
+    public const PAYMENT_METHOD_PREPAYMENT = 'prepayment';
+    public const PREPAYMENT_PROPERTY_PATH = self::PAYMENT_METHOD_PREPAYMENT . self::PROVIDER_NAME;
 
-    const ACCOUNT_HOLDER = 'ACCOUNT_HOLDER';
-    const IBAN = 'IBAN';
-    const BIC = 'BIC';
-    const CUSTOM_TEXT = 'CUSTOM_TEXT';
+    public const ACCOUNT_HOLDER = 'ACCOUNT_HOLDER';
+    public const IBAN = 'IBAN';
+    public const BIC = 'BIC';
+    public const CUSTOM_TEXT = 'CUSTOM_TEXT';
 }

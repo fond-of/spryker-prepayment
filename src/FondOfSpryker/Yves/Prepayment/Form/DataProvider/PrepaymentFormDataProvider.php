@@ -13,14 +13,14 @@ class PrepaymentFormDataProvider implements StepEngineFormDataProviderInterface
      *
      * @return \Spryker\Shared\Kernel\Transfer\AbstractTransfer
      */
-    public function getData(AbstractTransfer $dataTransfer)
+    public function getData(AbstractTransfer $dataTransfer): AbstractTransfer
     {
         if ($dataTransfer->getPayment() === null) {
             $paymentTransfer = new PaymentTransfer();
-            
+
             $dataTransfer->setPayment($paymentTransfer);
         }
-        
+
         return $dataTransfer;
     }
 
@@ -29,7 +29,7 @@ class PrepaymentFormDataProvider implements StepEngineFormDataProviderInterface
      *
      * @return array
      */
-    public function getOptions(AbstractTransfer $dataTransfer)
+    public function getOptions(AbstractTransfer $dataTransfer): array
     {
         return [];
     }

@@ -17,5 +17,5 @@ interface PrepaymentFacadeInterface
      *
      * @return void
      */
-    public function refund(array $salesOrderItems, SpySalesOrder $salesOrderEntity);
+    public function refund(array $salesOrderItems, SpySalesOrder $salesOrderEntity): void;
 }

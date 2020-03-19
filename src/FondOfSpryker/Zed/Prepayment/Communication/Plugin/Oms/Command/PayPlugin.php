@@ -20,7 +20,7 @@ class PayPlugin extends AbstractPlugin implements CommandByOrderInterface
      *
      * @return void
      */
-    public function run(array $salesOrderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data)
+    public function run(array $salesOrderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data): void
     {
     }
 }

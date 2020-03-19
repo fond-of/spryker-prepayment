@@ -14,11 +14,11 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 class CheckoutDependencyInjector implements DependencyInjectorInterface
 {
     /**
-     * @param \Spryker\Shared\Kernel\ContainerInterface|\Spryker\Yves\Kernel\Container $container
+     * @param \Spryker\Shared\Kernel\ContainerInterface $container
      *
-     * @return \Spryker\Shared\Kernel\ContainerInterface|\Spryker\Yves\Kernel\Container
+     * @return \Spryker\Shared\Kernel\ContainerInterface
      */
-    public function inject(ContainerInterface $container)
+    public function inject(ContainerInterface $container): ContainerInterface
     {
         $container = $this->injectPaymentSubForms($container);
         $container = $this->injectPaymentMethodHandler($container);
@@ -31,13 +31,16 @@ class CheckoutDependencyInjector implements DependencyInjectorInterface
      *
      * @return \Spryker\Shared\Kernel\ContainerInterface
      */
-    protected function injectPaymentSubForms(ContainerInterface $container)
+    protected function injectPaymentSubForms(ContainerInterface $container): ContainerInterface
     {
-        $container->extend(CheckoutDependencyProvider::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubForms) {
-            $paymentSubForms->add(new PrepaymentSubFormPlugin());
+        $container->extend(
+            CheckoutDependencyProvider::PAYMENT_SUB_FORMS,
+            static function (SubFormPluginCollection $paymentSubForms) {
+                $paymentSubForms->add(new PrepaymentSubFormPlugin());
 
-            return $paymentSubForms;
-        });
+                return $paymentSubForms;
+            }
+        );
 
         return $container;
     }
@@ -47,15 +50,17 @@ class CheckoutDependencyInjector implements DependencyInjectorInterface
      *
      * @return \Spryker\Shared\Kernel\ContainerInterface
      */
-    protected function injectPaymentMethodHandler(ContainerInterface $container)
+    protected function injectPaymentMethodHandler(ContainerInterface $container): ContainerInterface
     {
-        $container->extend(CheckoutDependencyProvider::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
-            $prepaymentHandlerPlugin = new PrepaymentHandlerPlugin();
-
-            $paymentMethodHandler->add($prepaymentHandlerPlugin, PrepaymentConstants::PREPAYMENT_PROPERTY_PATH);
-
-            return $paymentMethodHandler;
-        });
+        $container->extend(
+            CheckoutDependencyProvider::PAYMENT_METHOD_HANDLER,
+            static function (StepHandlerPluginCollection $paymentMethodHandler) {
+                return $paymentMethodHandler->add(
+                    new PrepaymentHandlerPlugin(),
+                    PrepaymentConstants::PREPAYMENT_PROPERTY_PATH
+                );
+            }
+        );
 
         return $container;
     }
