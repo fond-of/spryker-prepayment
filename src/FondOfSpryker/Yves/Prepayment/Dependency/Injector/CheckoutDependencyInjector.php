@@ -6,16 +6,16 @@ use FondOfSpryker\Shared\Prepayment\PrepaymentConstants;
 use FondOfSpryker\Yves\Prepayment\Plugin\PrepaymentHandlerPlugin;
 use FondOfSpryker\Yves\Prepayment\Plugin\PrepaymentSubFormPlugin;
 use Spryker\Shared\Kernel\ContainerInterface;
+use Spryker\Yves\Checkout\CheckoutDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Dependency\Injector\DependencyInjectorInterface;
-use Spryker\Yves\Checkout\CheckoutDependencyProvider;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 
 class CheckoutDependencyInjector implements DependencyInjectorInterface
 {
     /**
-     * @param  \Spryker\Yves\Kernel\Container  $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
      * @return \Spryker\Shared\Kernel\ContainerInterface|\Spryker\Yves\Kernel\Container
      */

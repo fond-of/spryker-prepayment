@@ -3,8 +3,6 @@
 namespace FondOfSpryker\Zed\Prepayment\Dependency\Injector;
 
 use FondOfSpryker\Zed\Prepayment\Communication\Plugin\Oms\Command\PayPlugin;
-use FondOfSpryker\Zed\Prepayment\Communication\Plugin\Oms\Command\RefundPlugin;
-use FondOfSpryker\Zed\Prepayment\Communication\Plugin\Oms\Condition\IsAuthorizedPlugin;
 use FondOfSpryker\Zed\Prepayment\Communication\Plugin\Oms\Condition\IsPayedPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Kernel\Dependency\Injector\AbstractDependencyInjector;
@@ -21,6 +19,7 @@ class OmsDependencyInjector extends AbstractDependencyInjector
      */
     public function injectBusinessLayerDependencies(Container $container)
     {
+        $container = parent::injectBusinessLayerDependencies($container);
         $container = $this->injectCommands($container);
         $container = $this->injectConditions($container);
 
@@ -35,7 +34,6 @@ class OmsDependencyInjector extends AbstractDependencyInjector
     protected function injectCommands(Container $container)
     {
         $container->extend(OmsDependencyProvider::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
-            $commandCollection->add(new RefundPlugin(), 'Prepayment/Refund');
             $commandCollection->add(new PayPlugin(), 'Prepayment/Pay');
 
             return $commandCollection;
@@ -52,7 +50,6 @@ class OmsDependencyInjector extends AbstractDependencyInjector
     protected function injectConditions(Container $container)
     {
         $container->extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
-            $conditionCollection->add(new IsAuthorizedPlugin(), 'Prepayment/IsAuthorized');
             $conditionCollection->add(new IsPayedPlugin(), 'Prepayment/IsPayed');
 
             return $conditionCollection;
