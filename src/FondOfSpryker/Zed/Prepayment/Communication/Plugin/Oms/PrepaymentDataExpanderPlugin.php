@@ -10,16 +10,18 @@ use Spryker\Zed\OmsExtension\Dependency\Plugin\OmsOrderMailExpanderPluginInterfa
 
 /**
  * @method \FondOfSpryker\Zed\Prepayment\PrepaymentConfig getConfig()
+ * @method \FondOfSpryker\Zed\Prepayment\Communication\PrepaymentCommunicationFactory getFactory()
+ * @method \FondOfSpryker\Zed\Prepayment\Business\PrepaymentFacadeInterface getFacade()
  */
 class PrepaymentDataExpanderPlugin extends AbstractPlugin implements OmsOrderMailExpanderPluginInterface
 {
     /**
-     * @param  \Generated\Shared\Transfer\MailTransfer  $mailTransfer
-     * @param  \Generated\Shared\Transfer\OrderTransfer  $orderTransfer
-     *
-     * @return \Generated\Shared\Transfer\MailTransfer
      * @api
      *
+     * @param \Generated\Shared\Transfer\MailTransfer $mailTransfer
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     *
+     * @return \Generated\Shared\Transfer\MailTransfer
      */
     public function expand(MailTransfer $mailTransfer, OrderTransfer $orderTransfer): MailTransfer
     {
@@ -36,6 +38,7 @@ class PrepaymentDataExpanderPlugin extends AbstractPlugin implements OmsOrderMai
         }
 
         $order->setPayments($payments);
+
         return $mailTransfer->setOrder($order);
     }
 }
