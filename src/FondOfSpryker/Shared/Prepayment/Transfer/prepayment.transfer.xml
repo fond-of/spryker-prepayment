@@ -5,5 +5,9 @@
 
     <transfer name="Payment">
         <property name="prepaymentPrepayment" type="string"/>
+        <property name="bic" type="string"/>
+        <property name="iban" type="string"/>
+        <property name="accountHolder" type="string"/>
+        <property name="bank" type="string"/>
     </transfer>
 </transfers>
